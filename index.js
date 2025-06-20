@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import conectaNaDatabase from "./src/config/dbConnect.js";
 import taskRoutes from "./src/routes/taskRoutes.js";
+import authRoutes from "./src/routes/authRoutes.js";
 
 
 dotenv.config();
@@ -16,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use("/tarefas", taskRoutes); //prefixo para todas as rotas de tarefas
-
+app.use("/auth", authRoutes); //prefixo para todas as rotas de autenticação
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
